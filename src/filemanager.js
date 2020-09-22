@@ -120,10 +120,15 @@ class FileManager {
 			if(id.startsWith("close_")) {
 				var tab = id.slice(6);
 				document.getElementById(`tab_${tab}`).remove();
-				if(tab.split("\\").pop() === self.file.split("\\").pop()) {
+				if(self.file) {
+					if(tab.split("\\").pop() === self.file.split("\\").pop()) {
+						rpc.setActivity({...defaultPresence})
+						self.editor.setModel(self.monaco.editor.createModel('', "txt"))
+						self.file = null;
+					}
+				} else {
 					rpc.setActivity({...defaultPresence})
 					self.editor.setModel(self.monaco.editor.createModel('', "txt"))
-					self.file = null;
 				}
 				return;
 			}
@@ -164,7 +169,7 @@ class FileManager {
 			if(document.getElementById(`tab_${parsedUrl}`)) {
 				document.getElementById(`tab_${parsedUrl}`).classList.add("active")
 			} else {
-				$("#tabs").append('<li class="active" id="tab_'+parsedUrl+'"><a href="#" id="tab_'+parsedUrl+'">'+url.split("\\").pop()+' <i class="fa fa-close close-button" style="color:white;" id="close_'+tab+'"></i> </a></li>');
+				$("#tabs").append('<li class="active" id="tab_'+parsedUrl+'"><a href="#" id="tab_'+parsedUrl+'">'+url.split("\\").pop()+' <i class="fa fa-close close-button" style="color:white;" id="close_'+parsedUrl+'"></i> </a></li>');
 			}
 			this.rpcSettings = JSON.parse(fs.readFileSync("./data/rpcSettings.json"))
 			const defaultPresence = {
