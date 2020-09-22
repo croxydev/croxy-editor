@@ -17,4 +17,4 @@ If you're using Linux OS, you must write "npm run-script package-linux" instead 
 
 ## License
 
-MIT
+Creative Commons

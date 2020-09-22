@@ -156,7 +156,6 @@ class FileManager {
 	}
 
 	openFile(url) {
-		console.log(url)
 		// fs.readFile doesn't know what `file://` means
 		const parsedUrl = (url.slice(0, 7) === 'file://') ? url.slice(7) : (!url.startsWith("C:") ? path.join(this.folder, url) : url);
 

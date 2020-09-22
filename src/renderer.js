@@ -21,7 +21,7 @@ const DiscordRPCSettings = () => {
 	win.show();
 }
 
-document.querySelector('#discord').onclick = () => DiscordRPCSettings();
+document.querySelector('#discordSettings').onclick = () => DiscordRPCSettings();
 
 loader().then((monaco) => {
 	const editor = monaco.editor.create(document.getElementById('container'), {
