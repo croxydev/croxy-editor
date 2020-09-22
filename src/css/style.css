@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+{
+    margin:0;padding:0;
+}
+.container, .sideBar, .content
+{
+    height: 100%;
+}
+h1
+{
+    height: 50px;
+    line-height: 50px;
+}
+.container
+{
+    margin-top: -50px;
+    padding-top: 50px;
+    box-sizing: border-box;
+}
+.sideBar
+{
+    float:left;
+    width: 100px;
+	background-color: #111;
+}
+.content
+{
+    overflow:hidden;
+}
+
+#container {
+  height: 92.5vh;
+  width: 82vw;
+}
+
+.monaco-editor {
+  height: 100%;
+}
+
+#titlebar {
+  width: 100vw;
+  height: 40px;
+  background-color: #1e1e1e;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-app-region: drag;
+  padding: 8px 0 0 10px;
+}
+

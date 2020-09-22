@@ -1,0 +1,16 @@
+* { margin: 0; padding: 0; outline: none; box-sizing: border-box; }
+.folder-tree-wrapper { width: 220px; min-height: 260px; padding: 20px; margin: 35px auto; border-radius: 3px; box-shadow: 1px 1px 1px 0 rgba(0,0,0,.11); }
+.folder-tree { list-style: none; cursor: pointer; padding-left: 20px; }
+.folder-tree li { margin-bottom: 10px; font-size: 14px; transition: all .4s ease; position: relative; }
+.folder-tree li:hover { }
+.folder-tree li i { color: rgb(242, 176, 53); }
+.folder-tree li i.node { color: lightgreen; }
+.folder-tree li ul { padding-left: 10px; padding-top: 8px; }
+.folder-tree ul { display: none; position: relative; }
+.folder-tree ul:before { position: absolute; content: ''; left: -10px; top: 0; width: 2px; height: 100%; background-color: transparent;}
+.folder-tree li ul li { display: block; margin-bottom: 8px; }
+.folder-tree .arrow { position: absolute; top: 4px; left: -14px; width: 8px; height: 8px; transition: all .4s ease; transform: rotate(-90deg); }
+.folder-tree .arrow i { color: #fff; transition: all .4s ease; }
+.folder-tree .arrow:hover i { color: #ccc; }
+.folder-tree li.expanded > ul { display: block; }
+.folder-tree li.expanded > .arrow { transform: rotate(0deg); }

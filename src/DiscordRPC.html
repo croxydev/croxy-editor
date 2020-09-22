@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Croxy Editor</title>
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/materialdesignicons.css">
+		<link rel="stylesheet" href="css/titleBar.css">
+		<link rel="stylesheet" href="css/discordRPC.css">
+		<script src="https://kit.fontawesome.com/1c9144b004.js" crossorigin="anonymous"></script>
+		<script src="./js/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@master/devicon.min.css">
+	</head>
+	<style>
+		body {
+			background-color: #23272A;
+		}
+	</style>
+	<body>
+		<div id="titlebar">
+			<div id="menu-bar">
+				<div class="left" role="menu">
+					<h5>Croxy Editor - Discord RPC Settings</h5>
+				</div>
+				<div class="right">
+					<button class="menubar-btn" id="quit"><i class="fas fa-times"></i></button>
+				</div>
+			</div>
+		</div>
+		<div class="inner-1JeGVc">
+			<div class="flex-1xMQg5 flex-1O1GKY vertical-V37hAW flex-1O1GKY directionColumn-35P_nr justifyStart-2NDFzi alignStretch-DpGPf3 noWrap-3jynv6 root-SR8cQa" style="flex: 1 1 auto;">
+				<div class="topSectionNormal-2-vo2m">
+					<header class="header-QKLPzZ flex-1O1GKY alignCenter-1dQNNs">
+						<div class="wrapper-2F3Zv8 profile-ZOdGIb avatar-3EQepX">
+							<div class="image-33JSyf profile-ZOdGIb maskProfile-1ObLFT mask-3OgeRz " style="background-image: url(https://cdn.discordapp.com/avatars/152164749868662784/8f0b7cdae1562928d44fd4f29ba66b8f.png?size=128);"></div>
+							<div class="online-2S838R status-oxiHuE profile-ZOdGIb statusProfile-3ynqtt"></div>
+						</div>
+						<div class="headerInfo-30uryT">
+							<div class="nameTag-2IFDfL userSelectText-1o1dQ7 nameTag-m8r81H"><span class="username username-3gJmXY">YourName</span><span class="discriminator discriminator-xUhQkU">#0000</span></div>
+						</div>
+					</header>
+					<div class=""></div>
+				</div>
+				<div class="body-3ND3kc">
+					<div class="scrollerWrap-2lJEkd firefoxFixScrollFlex-cnI2ix scrollerFade-1Ijw5y">
+						<div class="scroller-2FKFPG firefoxFixScrollFlex-cnI2ix">
+							<div class="userInfoSection-2acyCx">
+								<div class="userInfoSectionHeader-CBvMDh">Playing a Game</div>
+								<div class="playbox-area">
+									<img src="../icons/app.png" align="left" hspace="50" vspace="50"/> 
+									<div class="userInfoSectionHeader-CBvMDSh field"> Croxy Editor</div>
+									<input id="details" value="Editing: {file}" maxlength="32" onkeypress="saveChanges()" class="userInfoSectionHeader-CBvMDg" style="margin-left:6px; width:70%;"/><br>
+									<input id="state" value="Workspace: {workspace}" maxlength="32" onkeypress="saveChanges()" class="userInfoSectionHeader-CBvMDg" style="margin-left:6px; width:70%;"/><br>
+									<a class="userInfoSectionHeader-CBvMDg" style="margin-left:8px;">00:00 elapsed.</a>
+								</div>
+								<!--<div class="note-3kmerW note-QfFU8y">
+									<input placeholder="Click to add a note" maxlength="256" class="scrollbarGhostHairline-1mSOM1 scrollbar-3dvm_9" style="height: 24px;"/>
+								</div>-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		require('./js/titleBar.js')
+	</script>
+	<script>
+		const $ = require('./js/jquery.min.js');
+		const fs = require("fs");
+
+		$(document).ready(function() {
+			getValue("details")
+			getValue("state")
+		})
+
+		function saveChanges() {
+			var details = document.getElementById("details").value;
+			var state = document.getElementById("state").value;
+
+			fs.writeFileSync("./data/rpcSettings.json", JSON.stringify({
+				details: details,
+				state: state
+			}), "utf-8")
+
+		}
+
+		function getValue(value) {
+			const data = JSON.parse(fs.readFileSync("./data/rpcSettings.json"))
+			document.getElementById(value).value = (data[value] ? data[value] : `{${value}}`)
+		}
+	</script>
+</html>
+

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Croxy Editor</title>
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/materialdesignicons.css">
+		<link rel="stylesheet" href="css/general.css">
+		<link rel="stylesheet" href="css/folder.css">
+		<link rel="stylesheet" href="css/titleBar.css">
+		<script src="https://kit.fontawesome.com/1c9144b004.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@master/devicon.min.css">
+	</head>
+	<body>
+		<div class="main-view cw-toolbar-moved">
+			<div id="titlebar">
+				<div id="menu-bar">
+					<div class="left" role="menu">
+						<h5>Croxy Editor</h5>
+						<button class="menubar-btn" id="menu-btn"><font id="save">Save</font></button>
+						<button class="menubar-btn" id="menu-btn"><font id="open">Open</font></button>
+						<button class="menubar-btn" id="menu-btn"><font id="openFolder">Open Folder</font></button>
+					</div>
+					<div class="right">
+						<button class="menubar-btn" id="minimise"><i class="fas fa-window-minimize"></i></button>
+						<button class="menubar-btn" id="maximise"><i class="far fa-square"></i></button>
+						<button class="menubar-btn" id="quit"><i class="fas fa-times"></i></button>
+					</div>
+				</div>
+			</div>
+			<div id="sidebar" class="sidebar panel  right-resizer collapsible">
+				<div id="project-files-container">
+					<div id="project-files-header">
+						<div class="folder-tree-wrapper">
+							<ul class="folder-tree" id = "files-folders">
+
+							</ul>
+						</div>
+					</div>
+					<div class="working-file-list-container">
+						<js-tree tree-plugins="contextmenu,dnd,types" tree-types="typesConfig" tree-contextmenu="TreeContextMenu"  tree-events="select_node:nodeSelected"  tree-ajax="http://localhost:3000/api/tree" tree-core="tree_core"></js-tree>
+
+					</div>
+				</div>
+				<div id="main-toolbar" class="toolbar no-focus collapsible">
+					<div class="buttons">
+						<a id="discord" href="#">Discord RPC is not connected</a>
+					</div>
+				</div>
+			</div>
+			<div class="content">
+				<ul class="nav nav-tabs" id ="tabs">
+
+				</ul>
+				<br>
+				<div id="editor-holder">
+					<div id="container"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		require('./renderer.js')
+		require('./js/titleBar.js')
+	</script>
+</html>
+
