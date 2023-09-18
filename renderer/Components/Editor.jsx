@@ -2,17 +2,21 @@ import React, { useEffect, useRef, useState } from "react";
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import { html } from '@codemirror/lang-html';
+import { json } from '@codemirror/lang-json'
+import { php } from '@codemirror/lang-php'
 import { vscodeDark } from '@uiw/codemirror-theme-vscode';
 import { ipcRenderer } from "electron";
 import path from "path";
 import DiscordRPC from 'discord-rpc';
-import fs from "fs";
-import os from "os";
+import fs from "node:fs";
+import os from "node:os";
 
 var home = os.homedir()
 var _appPath = path.join(home, 'Documents', 'Croxy Code Editor')
 
 const extensions = {
+	json: json({ }),
+	php: php({ }),
 	ts: javascript({ jsx: true, typescript: true }),
 	js: javascript({ jsx: true, typescript: true }),
 	jsx: javascript({ jsx: true, typescript: true }),
