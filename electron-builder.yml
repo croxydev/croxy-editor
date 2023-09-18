@@ -1,0 +1,25 @@
+appId: com.croxythedeveloper.editor
+productName: Croxy Code Editor
+copyright: Copyright © 2023 Croxy
+directories:
+  output: dist
+  buildResources: resources
+files:
+  - from: .
+    filter:
+      - package.json
+      - app
+fileAssociations:
+  ext: 
+    - txt
+    - md
+    - yml
+    - js
+    - tsx
+    - jsx
+    - css
+    - html
+    - json
+  name: Croxy Code Editor
+  role: Editor
+publish: null
